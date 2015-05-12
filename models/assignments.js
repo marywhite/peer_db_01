@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var AssignmentSchema = new mongoose.Schema({
     name: String,
-    phone: String,
-    email: String
+    score: Number,
+    date_completed: Date
 });
 
 module.exports = mongoose.model('assignments', AssignmentSchema);

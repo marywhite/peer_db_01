@@ -1,15 +1,33 @@
 $(document).ready(function(){
 
-    $.ajax({
-        url: '/assignments',
-        dataType: "json",
-        success: function(response) {
-            display(response);
-        }
-    });
+    function getData() {
+        $.ajax({
+            url: '/assignments',
+            dataType: "json",
+            success: function (res) {
+                $('.entries').empty();
+                display(res);
+            }
+        });
+    }
+
+    getData();
 
     $('.entries').on('click', '.remove', function(){
        console.log($(this).parent());
+        var id = $(this).parent().attr('id');
+        console.log(id);
+        $.ajax({
+            url: '/assignments/' + id,
+            type: 'DELETE',
+            success: function (res) {
+                console.log(res);
+                getData();
+            },
+            error:function(xhr){
+                console.log(xhr);
+            }
+        });
     });
 
     function display(res) {
@@ -18,8 +36,7 @@ $(document).ready(function(){
         var button = "<button class='remove'>Remove</button>";
         for (var i = 0; i < res.length; i++){
             entry = res[i];
-            //date = entry["date"].format("m/dd/yy");
-            $('.entries').append("<li id=" + entry["_id"] +"> <b>Name: </b>" + entry["name"] + " <b>Score: </b>" + entry["score"] + " <b>Date Completed: </b>" + entry["date"] + button + "</li>");
+            $('.entries').append("<li id=" + entry["_id"] +"> <b>Name: </b>" + entry["name"] + " <b>Score: </b>" + entry["score"] + " <b>Date Completed: </b>" + entry["date_completed"] + button + "</li>");
         }
     }
 });

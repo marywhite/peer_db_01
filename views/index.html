@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="/stylesheets/style.css" rel="stylesheet">
     <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/app.js"></script>
 </head>
 <body>
 <h1>hi</h1>
 <ul class="entries"></ul>
+<form class="hidden revise">
+    <label for="name">Name:</label>
+    <input class="name" name="name" id="name" type="text">
+    <br />
+    <label for="score">score:</label>
+    <input class="score" name="score" id="score" type="text">
+    <br />
+
+    <label for="date_completed">Date Completed:</label>
+    <input class="date" name="date_completed" id="date_completed" type="text">
+    <br/>
+
+    <input class="submit" type="submit" value="Submit">
+</form>
 </body>
 </html>

@@ -33,10 +33,12 @@ $(document).ready(function(){
     function display(res) {
         var entry;
         var date;
+        var update = "<button class='remove'>Remove</button>";
         var button = "<button class='remove'>Remove</button>";
         for (var i = 0; i < res.length; i++){
             entry = res[i];
-            $('.entries').append("<li id=" + entry["_id"] +"> <b>Name: </b>" + entry["name"] + " <b>Score: </b>" + entry["score"] + " <b>Date Completed: </b>" + entry["date_completed"] + button + "</li>");
+            date = $.trim(entry["date_completed"].substring(0, 10));
+            $('.entries').append("<li id=" + entry["_id"] +"> <b>Name: </b>" + entry["name"] + " <b>Score: </b>" + entry["score"] + " <b>Date Completed: </b>" + date + button + "</li>");
         }
     }
 });

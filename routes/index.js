@@ -3,10 +3,11 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var path = require('path');
 
-
 /* GET home page. */
 router.get("/", function(req,res,next){
   res.sendFile(path.resolve(__dirname, '../views/index.html'));
 });
+
+
 
 module.exports = router;

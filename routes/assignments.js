@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var path = require('path');
 var assignments = require('../models/assignments');
 
 /* GET /assignments listing. */
@@ -13,11 +14,11 @@ router.get('/', function(req, res, next) {
 
 /* POST /assignments*/
 router.post('/', function(req, res, next) {
-  console.log(req.body);
+    console.log(req.body);
     assignments.create(req.body, function (err, post) {
-    if (err) return next(err);
-    res.json(post);
-  });
+        if (err) return next(err);
+        res.redirect(path.resolve('/'));
+    });
 });
 
 /* PUT /assignments/:id */
